@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Be My Valentine?</title>
+
 <style>
   body {
     text-align: center;
     font-family: Arial, sans-serif;
     background-color: #ffe6f0;
-    margin-top: 100px;
+    margin-top: 80px;
   }
 
   h1 {
@@ -22,54 +23,71 @@
     cursor: pointer;
     border: none;
     border-radius: 8px;
+    transition: all 0.3s ease;
   }
 
   #yesBtn {
     background-color: #ff4081;
     color: white;
-    transition: all 0.3s ease;
   }
 
   #noBtn {
     background-color: #555;
     color: white;
   }
+
+  img {
+    margin-top: 20px;
+  }
 </style>
 </head>
 
 <body>
 
-<h1>Will You Be My Valentine? 💖</h1>
+<h1 id="question">Will You Be My Valentine? 💖</h1>
 
 <button id="yesBtn">Yes ❤️</button>
 <button id="noBtn">No 😏</button>
+
+<br><br>
+
+<!-- Images -->
+<img id="sadImg" src="sad.png" style="width:220px; display:none;">
+<img id="catImg" src="cat.png" style="width:250px; display:none;">
+
 <script>
-  let yesSize = 18;
 
-  document.getElementById("noBtn").addEventListener("click", function() {
+let yesSize = 18;
 
-    // Make YES button bigger
-    yesSize += 10;
-    const yesButton = document.getElementById("yesBtn");
-    yesButton.style.fontSize = yesSize + "px";
-    yesButton.style.padding = (yesSize/2) + "px";
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const sadImg = document.getElementById("sadImg");
+const catImg = document.getElementById("catImg");
+const question = document.getElementById("question");
 
-    // Show sad image at bottom
-    const img = document.createElement("img");
-    img.src = "sad.png";
-    img.style.width = "120px";
-    img.style.display = "block";
-    img.style.margin = "10px auto";
+noBtn.addEventListener("click", function() {
 
-    document.body.appendChild(img);
-  });
+  // Show sad image, hide cat
+  sadImg.style.display = "block";
+  catImg.style.display = "none";
 
-  document.getElementById("yesBtn").addEventListener("click", function() {
-    document.body.innerHTML = `
-      <h1 style="color:#c2185b;">Yaaay! I knew it! 💖😘</h1>
-      <img src="cat.png" style="width:300px; margin-top:20px;">
-    `;
-  });
+  // Grow YES button
+  yesSize += 10;
+  yesBtn.style.fontSize = yesSize + "px";
+  yesBtn.style.padding = (yesSize/2) + "px";
+
+});
+
+yesBtn.addEventListener("click", function() {
+
+  // Show cat image, hide sad
+  catImg.style.display = "block";
+  sadImg.style.display = "none";
+
+  question.innerText = "Yaaay! I knew you would say YES! 💖😘";
+
+});
+
 </script>
 
 </body>
