@@ -86,7 +86,6 @@
   </div>
 
 </div>
-
 <script>
 
 const yesBtn = document.getElementById("yesBtn");
@@ -96,8 +95,18 @@ const catImg = document.getElementById("catImg");
 const question = document.getElementById("question");
 
 let increase = 0;
+let alreadyAccepted = false;
 
 noBtn.addEventListener("click", function() {
+
+  // If YES was already clicked
+  if (alreadyAccepted) {
+    question.innerText = "Too late 😌 You already said YES. There's no going back now 💖";
+    sadImg.style.display = "none";
+    catImg.style.display = "block";
+    noBtn.disabled = true;
+    return;
+  }
 
   sadImg.style.display = "block";
   catImg.style.display = "none";
@@ -110,17 +119,18 @@ noBtn.addEventListener("click", function() {
 
 yesBtn.addEventListener("click", function() {
 
+  alreadyAccepted = true;
+
   catImg.style.display = "block";
   sadImg.style.display = "none";
   question.innerText = "Yaaay! I knew you would say YES! 💖😘";
 
-  // 🔥 FULL RESET
+  // Reset Yes button size
   increase = 0;
   yesBtn.style.fontSize = "20px";
   yesBtn.style.padding = "12px 25px";
 });
 
 </script>
-
 </body>
 </html>
