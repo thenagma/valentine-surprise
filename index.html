@@ -47,16 +47,27 @@
   let yesSize = 18;
 
   document.getElementById("noBtn").addEventListener("click", function() {
+
+    // Make YES button bigger
     yesSize += 10;
     const yesButton = document.getElementById("yesBtn");
     yesButton.style.fontSize = yesSize + "px";
     yesButton.style.padding = (yesSize/2) + "px";
+
+    // Show sad image at bottom
+    const img = document.createElement("img");
+    img.src = "sad.png";
+    img.style.width = "120px";
+    img.style.display = "block";
+    img.style.margin = "10px auto";
+
+    document.body.appendChild(img);
   });
 
   document.getElementById("yesBtn").addEventListener("click", function() {
     document.body.innerHTML = `
       <h1 style="color:#c2185b;">Yaaay! I knew it! 💖😘</h1>
-      <img src="love-cat.gif" alt="Cute love cat" style="width:300px; margin-top:20px;">
+      <img src="cat.png" style="width:300px; margin-top:20px;">
     `;
   });
 </script>
