@@ -95,19 +95,31 @@ const catImg = document.getElementById("catImg");
 const question = document.getElementById("question");
 
 let increase = 0;
-let alreadyAccepted = false; // 🔥 Track if Yes clicked
+let alreadyAccepted = false;
 
 noBtn.addEventListener("click", function() {
 
-  // If already said YES
+  // If YES was already clicked
   if (alreadyAccepted) {
-    question.innerText = "Oops 😌 Chance chala gaya... Ab option nahi hai! 💖";
+    question.innerText = "Too late 😌 You already said YES. Now there's no escape 💖";
+    
     sadImg.style.display = "none";
     catImg.style.display = "block";
-    noBtn.disabled = true; // disable No button
+
+    // Disable BOTH buttons
+    noBtn.disabled = true;
+    yesBtn.disabled = true;
+
+    noBtn.style.backgroundColor = "#999";
+    yesBtn.style.backgroundColor = "#999";
+
+    noBtn.style.cursor = "not-allowed";
+    yesBtn.style.cursor = "not-allowed";
+
     return;
   }
 
+  // Normal No behavior
   sadImg.style.display = "block";
   catImg.style.display = "none";
 
@@ -119,13 +131,13 @@ noBtn.addEventListener("click", function() {
 
 yesBtn.addEventListener("click", function() {
 
-  alreadyAccepted = true; // 🔥 Mark as accepted
+  alreadyAccepted = true;
 
   catImg.style.display = "block";
   sadImg.style.display = "none";
   question.innerText = "Yaaay! I knew you would say YES! 💖😘";
 
-  // Reset Yes button
+  // Reset Yes button size
   increase = 0;
   yesBtn.style.fontSize = "20px";
   yesBtn.style.padding = "12px 25px";
