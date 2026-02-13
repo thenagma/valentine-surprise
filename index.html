@@ -65,6 +65,7 @@
     max-width: 250px;
     display: none;
   }
+
 </style>
 </head>
 
@@ -87,10 +88,7 @@
 </div>
 
 <script>
-
-let defaultFontSize = 20;
-let defaultPadding = "12px 25px";
-let yesSize = defaultFontSize;
+let yesSize = 20;
 
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
@@ -99,35 +97,19 @@ const catImg = document.getElementById("catImg");
 const question = document.getElementById("question");
 
 noBtn.addEventListener("click", function() {
-
-  // Show sad image
   sadImg.style.display = "block";
   catImg.style.display = "none";
 
-  // Grow YES button
   yesSize += 10;
   yesBtn.style.fontSize = yesSize + "px";
-  yesBtn.style.padding = yesSize / 2 + "px";
+  yesBtn.style.padding = yesSize/2 + "px";
 });
 
 yesBtn.addEventListener("click", function() {
-
-  // Show happy image
   catImg.style.display = "block";
   sadImg.style.display = "none";
-
   question.innerText = "Yaaay! I knew you would say YES! 💖😘";
-
-  // 🔥 Reset BOTH buttons to default size
-  yesSize = defaultFontSize;
-
-  yesBtn.style.fontSize = defaultFontSize + "px";
-  yesBtn.style.padding = defaultPadding;
-
-  noBtn.style.fontSize = defaultFontSize + "px";
-  noBtn.style.padding = defaultPadding;
 });
-
 </script>
 
 </body>
